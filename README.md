@@ -1,7 +1,7 @@
 # ⏰ Whenever-None
 
 [![](https://img.shields.io/pypi/v/whenever-none.svg?color=blue)](https://pypi.python.org/pypi/whenever-none)
-[![](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%SuadeLabs%2Fwhenever-none%2Fmain%2Fpyproject.toml)](https://pypi.python.org/pypi/whenever-none)
+[![](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2FSuadeLabs%2Fwhenever-none%2Fmain%2Fpyproject.toml)](https://pypi.python.org/pypi/whenever-none)
 [![](https://img.shields.io/pypi/l/whenever-none.svg?color=blue)](https://pypi.python.org/pypi/whenever-none)
 [![](https://img.shields.io/github/actions/workflow/status/SuadeLabs/whenever-none/checks.yml?branch=main)](https://github.com/SuadeLabs/whenever-none)
 
