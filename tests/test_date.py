@@ -374,6 +374,15 @@ def test_comparison():
     assert d > AlwaysSmaller()
 
 
+def test_none_comparison():
+    d = Date(2021, 5, 10)
+
+    assert not d <= None
+    assert not d < None
+    assert d > None
+    assert d >= None
+
+
 class TestAdd:
 
     @pytest.mark.parametrize(

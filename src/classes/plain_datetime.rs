@@ -229,6 +229,19 @@ fn parse_common_iso(cls: HeapType<DateTime>, arg: PyObj) -> PyReturn {
 }
 
 fn __richcmp__(cls: HeapType<DateTime>, slf: DateTime, other: PyObj, op: c_int) -> PyReturn {
+    if other.is_none() {
+        return match op {
+            pyo3_ffi::Py_EQ => false,
+            pyo3_ffi::Py_NE => true,
+            pyo3_ffi::Py_LT => false,
+            pyo3_ffi::Py_LE => false,
+            pyo3_ffi::Py_GT => true,
+            pyo3_ffi::Py_GE => true,
+            _ => unreachable!(),
+        }
+        .to_py();
+    }
+
     if let Some(dt) = other.extract(cls) {
         match op {
             pyo3_ffi::Py_LT => slf < dt,

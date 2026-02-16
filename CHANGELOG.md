@@ -1,5 +1,12 @@
 # 🚀 Changelog
 
+## 0.9.5.1 (2026-02-16)
+
+- Add support for comparison with None.
+
+  Within this fork, None counts as the beginning of time,
+  i.e. this will always return true: `Instance.now() > None`.
+
 ## 0.9.5 (2026-01-11)
 
 Fix issue where not all windows wheels were built and uploaded (#317)

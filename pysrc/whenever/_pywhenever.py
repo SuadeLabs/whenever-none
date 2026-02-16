@@ -598,22 +598,30 @@ class Date(_Base):
     def __hash__(self) -> int:
         return hash(self._py_date)
 
-    def __lt__(self, other: Date) -> bool:
+    def __lt__(self, other: Date | None) -> bool:
+        if other is None:
+            return False
         if not isinstance(other, Date):
             return NotImplemented
         return self._py_date < other._py_date
 
-    def __le__(self, other: Date) -> bool:
+    def __le__(self, other: Date | None) -> bool:
+        if other is None:
+            return False
         if not isinstance(other, Date):
             return NotImplemented
         return self._py_date <= other._py_date
 
-    def __gt__(self, other: Date) -> bool:
+    def __gt__(self, other: Date | None) -> bool:
+        if other is None:
+            return True
         if not isinstance(other, Date):
             return NotImplemented
         return self._py_date > other._py_date
 
-    def __ge__(self, other: Date) -> bool:
+    def __ge__(self, other: Date | None) -> bool:
+        if other is None:
+            return True
         if not isinstance(other, Date):
             return NotImplemented
         return self._py_date >= other._py_date
@@ -3195,7 +3203,7 @@ class _ExactTime(_BasicConversions):
             other._nanos,
         )
 
-    def __lt__(self, other: _ExactTime) -> bool:
+    def __lt__(self, other: _ExactTime | None) -> bool:
         """Compare two datetimes by when they occur in time
 
         ``a < b`` is equivalent to ``a.to_instant() < b.to_instant()``
@@ -3207,6 +3215,8 @@ class _ExactTime(_BasicConversions):
         ... )
         True
         """
+        if other is None:
+            return False
         if not isinstance(other, _ExactTime):
             return NotImplemented
         return (self._py_dt.astimezone(_UTC), self._nanos) < (
@@ -3214,7 +3224,7 @@ class _ExactTime(_BasicConversions):
             other._nanos,
         )
 
-    def __le__(self, other: _ExactTime) -> bool:
+    def __le__(self, other: _ExactTime | None) -> bool:
         """Compare two datetimes by when they occur in time
 
         ``a <= b`` is equivalent to ``a.to_instant() <= b.to_instant()``
@@ -3226,6 +3236,8 @@ class _ExactTime(_BasicConversions):
         ... )
         True
         """
+        if other is None:
+            return False
         if not isinstance(other, _ExactTime):
             return NotImplemented
         return (self._py_dt.astimezone(_UTC), self._nanos) <= (
@@ -3233,7 +3245,7 @@ class _ExactTime(_BasicConversions):
             other._nanos,
         )
 
-    def __gt__(self, other: _ExactTime) -> bool:
+    def __gt__(self, other: _ExactTime | None) -> bool:
         """Compare two datetimes by when they occur in time
 
         ``a > b`` is equivalent to ``a.to_instant() > b.to_instant()``
@@ -3245,6 +3257,8 @@ class _ExactTime(_BasicConversions):
         ... )
         True
         """
+        if other is None:
+            return True
         if not isinstance(other, _ExactTime):
             return NotImplemented
         return (self._py_dt.astimezone(_UTC), self._nanos) > (
@@ -3252,7 +3266,7 @@ class _ExactTime(_BasicConversions):
             other._nanos,
         )
 
-    def __ge__(self, other: _ExactTime) -> bool:
+    def __ge__(self, other: _ExactTime | None) -> bool:
         """Compare two datetimes by when they occur in time
 
         ``a >= b`` is equivalent to ``a.to_instant() >= b.to_instant()``
@@ -3264,6 +3278,8 @@ class _ExactTime(_BasicConversions):
         ... )
         True
         """
+        if other is None:
+            return True
         if not isinstance(other, _ExactTime):
             return NotImplemented
         return (self._py_dt.astimezone(_UTC), self._nanos) >= (
@@ -5076,22 +5092,30 @@ class PlainDateTime(_LocalTime):
     MAX: ClassVar[PlainDateTime]
     """The maximum representable value of this type."""
 
-    def __lt__(self, other: PlainDateTime) -> bool:
+    def __lt__(self, other: PlainDateTime | None) -> bool:
+        if other is None:
+            return False
         if not isinstance(other, PlainDateTime):
             return NotImplemented
         return (self._py_dt, self._nanos) < (other._py_dt, other._nanos)
 
-    def __le__(self, other: PlainDateTime) -> bool:
+    def __le__(self, other: PlainDateTime | None) -> bool:
+        if other is None:
+            return False
         if not isinstance(other, PlainDateTime):
             return NotImplemented
         return (self._py_dt, self._nanos) <= (other._py_dt, other._nanos)
 
-    def __gt__(self, other: PlainDateTime) -> bool:
+    def __gt__(self, other: PlainDateTime | None) -> bool:
+        if other is None:
+            return True
         if not isinstance(other, PlainDateTime):
             return NotImplemented
         return (self._py_dt, self._nanos) > (other._py_dt, other._nanos)
 
-    def __ge__(self, other: PlainDateTime) -> bool:
+    def __ge__(self, other: PlainDateTime | None) -> bool:
+        if other is None:
+            return True
         if not isinstance(other, PlainDateTime):
             return NotImplemented
         return (self._py_dt, self._nanos) >= (other._py_dt, other._nanos)

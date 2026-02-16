@@ -447,14 +447,14 @@ class TestComparison:
             42 > d  # type: ignore[operator]
         with pytest.raises(TypeError):
             42 >= d  # type: ignore[operator]
-        with pytest.raises(TypeError):
-            None < d  # type: ignore[operator]
-        with pytest.raises(TypeError):
-            None <= d  # type: ignore[operator]
-        with pytest.raises(TypeError):
-            None > d  # type: ignore[operator]
-        with pytest.raises(TypeError):
-            None >= d  # type: ignore[operator]
+
+    def test_none(self):
+        d = Instant.from_utc(2020, 8, 15, 23, 12, 9)
+
+        assert not d < None
+        assert not d <= None
+        assert d > None
+        assert d >= None
 
 
 def test_py_datetime():

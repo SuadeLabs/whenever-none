@@ -728,6 +728,14 @@ class TestComparison:
         with pytest.raises(TypeError):
             d >= 42  # type: ignore[operator]
 
+    def test_none(self):
+        d = OffsetDateTime(2020, 8, 15, 12, 30, offset=5)
+
+        assert not d < None
+        assert not d <= None
+        assert d > None
+        assert d >= None
+
 
 @pytest.mark.parametrize(
     "d, expect",

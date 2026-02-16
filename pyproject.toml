@@ -1,13 +1,14 @@
 [project]
-name = "whenever"
+name = "whenever-none"
 authors = [
     {name = "Arie Bovenberg", email = "a.c.bovenberg@gmail.com"},
+    {name = "Oliver Margetts", email = "oliver.margetts@gmail.com"},
 ]
 maintainers = [
-    {name = "Arie Bovenberg", email = "a.c.bovenberg@gmail.com"},
+    {name = "Oliver Margetts", email = "oliver.margetts@gmail.com"},
 ]
 readme = "README.md"
-version = "0.9.5"
+version = "0.9.5.1"
 license = "MIT"
 description = "Modern datetime library for Python"
 requires-python = ">=3.9"
@@ -43,9 +44,9 @@ keywords = [
 
 [project.urls]
 Documentation = "https://whenever.readthedocs.io"
-Repository = "https://github.com/ariebovenberg/whenever"
-Issues = "https://github.com/ariebovenberg/whenever/issues"
-Changelog = "https://github.com/ariebovenberg/whenever/blob/main/CHANGELOG.md"
+Repository = "https://github.com/SuadeLabs/whenever-none"
+Issues = "https://github.com/SuadeLabs/whenever-none/issues"
+Changelog = "https://github.com/SuadeLabs/whenever-none/blob/main/CHANGELOG.md"
 
 [tool.black]
 line-length = 79
@@ -67,6 +68,7 @@ exclude = '''
 profile = 'black'
 line_length = 79
 combine_as_imports = true
+known_first_party = ["whenever"]
 
 [tool.mypy]
 warn_unused_ignores = true

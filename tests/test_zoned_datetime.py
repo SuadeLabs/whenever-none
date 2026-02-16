@@ -2189,6 +2189,14 @@ class TestComparison:
         with pytest.raises(TypeError):
             42 >= d  # type: ignore[operator]
 
+    def test_none(self):
+        d = ZonedDateTime(2020, 8, 15, 15, 12, 9, tz="Asia/Kolkata")
+
+        assert not d < None
+        assert not d <= None
+        assert d > None
+        assert d >= None
+
 
 class TestPyDatetime:
     def test_iana_tz_id(self):
