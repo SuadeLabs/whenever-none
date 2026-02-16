@@ -1,5 +1,9 @@
 # 🚀 Changelog
 
+## 0.9.5.2 (2026-02-16)
+
+Minor docs fixes.
+
 ## 0.9.5.1 (2026-02-16)
 
 - Add support for comparison with None.
