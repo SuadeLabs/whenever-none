@@ -292,6 +292,19 @@ fn __new__(cls: HeapType<Date>, args: PyTuple, kwargs: Option<PyDict>) -> PyRetu
 }
 
 fn __richcmp__(cls: HeapType<Date>, a: Date, b_obj: PyObj, op: c_int) -> PyReturn {
+    if b_obj.is_none() {
+        return match op {
+            pyo3_ffi::Py_EQ => false,
+            pyo3_ffi::Py_NE => true,
+            pyo3_ffi::Py_LT => false,
+            pyo3_ffi::Py_LE => false,
+            pyo3_ffi::Py_GT => true,
+            pyo3_ffi::Py_GE => true,
+            _ => unreachable!(),
+        }
+        .to_py();
+    }
+
     match b_obj.extract(cls) {
         Some(b) => match op {
             pyo3_ffi::Py_EQ => a == b,

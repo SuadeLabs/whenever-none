@@ -475,6 +475,19 @@ fn __richcmp__(
     b_obj: PyObj,
     op: c_int,
 ) -> PyReturn {
+    if b_obj.is_none() {
+        return match op {
+            pyo3_ffi::Py_EQ => false,
+            pyo3_ffi::Py_NE => true,
+            pyo3_ffi::Py_LT => false,
+            pyo3_ffi::Py_LE => false,
+            pyo3_ffi::Py_GT => true,
+            pyo3_ffi::Py_GE => true,
+            _ => unreachable!(),
+        }
+        .to_py();
+    }
+
     let inst_a = a.instant();
     let inst_b = if let Some(zdt) = b_obj.extract(cls) {
         zdt.instant()
