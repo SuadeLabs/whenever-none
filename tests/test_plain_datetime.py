@@ -496,6 +496,15 @@ def test_comparison():
         d < 42  # type: ignore[operator]
 
 
+def test_none_comparison():
+    d = PlainDateTime(2020, 8, 15, 23, 12, 9)
+
+    assert not d <= None
+    assert not d < None
+    assert d > None
+    assert d >= None
+
+
 def test_py_datetime():
     d = PlainDateTime(2020, 8, 15, 23, 12, 9, nanosecond=987_654_823)
     assert d.py_datetime() == py_datetime(2020, 8, 15, 23, 12, 9, 987_654)
